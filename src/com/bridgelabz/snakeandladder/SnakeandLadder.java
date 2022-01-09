@@ -15,6 +15,7 @@ public class SnakeandLadder {
 		int reach = 0;
 		int roll = 0;
 		int start = 0;
+		int counter = 0;
 
 		while (reach < WINNING_POSITION) {
 			reach++;
@@ -30,19 +31,19 @@ public class SnakeandLadder {
 				roll = 0;
 				break;
 			case LADDER:
+				counter++;
 				roll = +diceValue;
 				break;
 			case SNAKE:
 				roll = -diceValue;
 				break;
 			}
-
 			position = (position + roll);
 			if ((position < start) && (option == 0)) {
 				System.out.println("Current Position: " + start);
 				reach = start;
 				System.out.println("Reached: " + reach);
-			} else if ((position > WINNING_POSITION) && (option == 1)) {
+			} else if ((position > WINNING_POSITION) && ((option == 1) || (option == 2))) {
 				System.out.println("Current Position: " + position);
 				reach = WINNING_POSITION;
 				System.out.println("Reached: " + reach);
@@ -57,7 +58,9 @@ public class SnakeandLadder {
 				System.out.println("Reached: " + reach);
 			}
 		}
+		System.out.println("Number of time dice was rolled to win game :" + counter);
 		System.out.println("Win:" + reach);
 	}
 
 }
+
